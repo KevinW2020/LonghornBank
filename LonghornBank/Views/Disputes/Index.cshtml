@@ -1,0 +1,61 @@
+﻿@model IEnumerable<LonghornBank.Models.Dispute>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DisputeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DisputeStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Transaction.TransactionDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CorrectAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeleteTransaction)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DisputeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DisputeStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Transaction.TransactionDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CorrectAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeleteTransaction)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.DisputeID })
+        </td>
+    </tr>
+}
+
+</table>
+
+<br />
+@Html.ActionLink("Click here to go home", "ManagerHome", "Account", null, new { @class = "btn btn-primary" })

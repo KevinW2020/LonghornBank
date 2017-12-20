@@ -1,0 +1,30 @@
+﻿@using LonghornBank.Controllers
+@using LonghornBank.Models
+@{
+    ViewBag.Title = "AddPayee";
+}
+
+<h2>Add Payee</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Select from pre-existing Payees</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-10">
+                Choose a payee: <br />@Html.DropDownList("PayeeID", ViewBag.AllThePayees as SelectList, new { @class = "form-control" }) <br />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Select Payee" class="btn btn-primary" />
+                @Html.ActionLink("Create Custom Payee", "Create", "Payees", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+}

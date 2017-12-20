@@ -1,0 +1,168 @@
+﻿@model LonghornBank.Models.AppUser
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>Select an Account to Transfer to</h3>
+
+<h4>Checking</h4>
+<table class="table">
+    <tr>
+        <th>
+            Checking Account Number
+        </th>
+        <th>
+            Checking Account Name
+        </th>
+        <th>
+            Checking Balance
+        </th>
+        <th>
+            Actions
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Checkings)
+    {
+        string Actual = Convert.ToString(item.CheckingNumber);
+        string sub = Actual.Substring(6, 4);
+        string used = "XXXXXX" + sub;
+
+        <tr>
+            <td>
+                @used
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckingName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckingBalance)
+            </td>
+            <td>
+                @Html.ActionLink("Select this Account", "TransferConfirmation", new { Toid = item.CheckingID, ToSelectedType = "Checking", ToAccountNumber = item.CheckingNumber, id = ViewBag.Id, SelectedType = ViewBag.AccountType, AccountNumber = ViewBag.AccountNumber })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<h4>Savings</h4>
+<table class="table">
+    <tr>
+        <th>
+            Savings Account Number
+        </th>
+        <th>
+            Savings Account Name
+        </th>
+        <th>
+            Savings Balance
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Savings)
+    {
+        string Actual = Convert.ToString(item.SavingsNumber);
+        string sub = Actual.Substring(6, 4);
+        string used = "XXXXXX" + sub;
+
+        <tr>
+            <td>
+                @used
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SavingsName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SavingsBalance)
+            </td>
+            <td>
+                @Html.ActionLink("Select this Account", "TransferConfirmation", new { Toid = item.SavingsID, ToSelectedType = "Savings", ToAccountNumber = item.SavingsNumber, id = ViewBag.Id, SelectedType = ViewBag.AccountType, AccountNumber = ViewBag.AccountNumber })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<h4>IRA</h4>
+<table class="table">
+    <tr>
+        <th>
+            IRA Account Number
+        </th>
+        <th>
+            IRA Account Name
+        </th>
+        <th>
+            IRA Balance
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.IRAs)
+    {
+        string Actual = Convert.ToString(item.IRANumber);
+        string sub = Actual.Substring(6, 4);
+        string used = "XXXXXX" + sub;
+
+        <tr>
+            <td>
+                @used
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IRAName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IRABalance)
+            </td>
+            <td>
+                @Html.ActionLink("Select this Account", "TransferConfirmation", new { Toid = item.IRAID, ToSelectedType = "IRA", ToAccountNumber = item.IRANumber, id = ViewBag.Id, SelectedType = ViewBag.AccountType, AccountNumber = ViewBag.AccountNumber })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<h4>Stock Portfolio</h4>
+<table class="table">
+    <tr>
+        <th>
+            Stock Account Number
+        </th>
+        <th>
+            Stock Account Name
+        </th>
+        <th>
+            Cash Value Balance
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.StockPortfolios)
+    {
+        string Actual = Convert.ToString(item.StockPortfolioNumber);
+        string sub = Actual.Substring(6, 4);
+        string used = "XXXXXX" + sub;
+
+        <tr>
+            <td>
+                @used
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockPortfolioName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CashBalance)
+            </td>
+            <td>
+                @Html.ActionLink("Select this Account", "TransferConfirmation", new { Toid = item.StockPortfolioID, ToSelectedType = "Stock", ToAccountNumber = item.StockPortfolioNumber, id = ViewBag.Id, SelectedType = ViewBag.AccountType, AccountNumber = ViewBag.AccountNumber })
+            </td>
+        </tr>
+    }
+
+</table>
+
+

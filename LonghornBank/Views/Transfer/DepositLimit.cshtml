@@ -1,0 +1,42 @@
+﻿@using LonghornBank.Controllers
+@using LonghornBank.Models
+
+
+@{
+    ViewBag.Title = "Deposit Limit";
+}
+
+<h2>Deposit Limit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <br />
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-10">
+                Selected From: <br />@Html.RadioButton("SelectedFrom", (string)ViewBag.SelectedFrom, true, new { @class = "form-check-input" }) @ViewBag.SelectedFrom<br /> <br />
+                Selected To: <br />@Html.RadioButton("SelectedTo", (string)ViewBag.SelectedTo, true, new { @class = "form-check-input" }) @ViewBag.SelectedTo<br />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                Enter an Amount: <br />@Html.TextBox("SelectedAmount", null, new { @class = "form-control" }) <br />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                Enter a transaction date: <br />@Html.TextBox("TransactionDate", null, new { @class = "form-control" }) <br />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Transfer" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

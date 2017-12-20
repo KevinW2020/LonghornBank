@@ -1,0 +1,50 @@
+﻿@model LonghornBank.Models.Pending
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pending</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PendingStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PendingStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorrectAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorrectAmount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PendingID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

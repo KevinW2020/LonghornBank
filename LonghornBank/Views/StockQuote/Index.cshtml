@@ -1,0 +1,50 @@
+﻿@model IEnumerable<LonghornBank.Models.StockQuote>
+
+@{
+    ViewBag.Title = "Live Stock Prices";
+}
+
+<h2>Live Stock Prices</h2>
+
+
+@Html.ActionLink("Click here to buy new shares", "Buy", "StockPortfolios", null, new { @class = "btn btn-primary" })
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Symbol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreviousClose)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastTradePrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Volume)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Symbol)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousClose)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastTradePrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Volume)
+        </td>
+    </tr>
+}
+
+</table>

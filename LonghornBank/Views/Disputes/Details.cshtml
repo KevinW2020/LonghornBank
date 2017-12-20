@@ -1,0 +1,64 @@
+﻿@model LonghornBank.Models.Dispute
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Dispute</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.DisputeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisputeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DisputeStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisputeStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Transaction.TransactionDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Transaction.TransactionDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorrectAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorrectAmount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeleteTransaction)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeleteTransaction)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

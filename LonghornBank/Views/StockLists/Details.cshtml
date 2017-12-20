@@ -1,0 +1,50 @@
+﻿@model LonghornBank.Models.StockList
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>StockList</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ticker)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ticker)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StockType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StockType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionFee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionFee)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StockListID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

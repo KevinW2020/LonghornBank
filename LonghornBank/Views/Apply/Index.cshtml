@@ -1,0 +1,42 @@
+﻿@using LonghornBank.Controllers
+@using LonghornBank.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Apply For a New Account</h2>
+
+<br /> <br />
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Apply for a new account</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-10">
+                Choose a service: <br />@Html.DropDownList("SelectedType", (SelectList)ViewBag.BankingTypes, new { @class = "form-control" }) <br />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                Starting Deposit: <br />@Html.TextBox("StartingBalance", null, new { @class = "form-control" }) <br />
+            </div>
+        </div>
+        @*<div class="form-group">
+            <div class="col-md-10">
+                Name the Account: <br />@Html.TextBox("SelectedName", null, new { @class = "form-control" }) <br />
+            </div>
+        </div>*@
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

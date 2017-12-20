@@ -1,0 +1,48 @@
+﻿@using LonghornBank.Controllers
+@using LonghornBank.Models
+@{
+    ViewBag.Title = "Buy";
+}
+
+<h2>Buy</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="form-horizontal">
+        @Html.ActionLink("Go Back", "Index", "StockPortfolios", null, new { @class = "btn btn-primary" })
+
+        <br />
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-10">
+                [Selected Account Number, Account Balance, Account Name]: <br />@Html.DropDownList("SelectAccount", (SelectList)ViewBag.SelectedAccount, new { @class = "form-control" }) <br />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                Stock, Previous Close, Company Name, Stock Type, Transaction Fee: <br />@Html.DropDownList("SelectTicker", (SelectList)ViewBag.Ticker, new { @class = "form-control" }) <br />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                Enter the number of shares: <br />@Html.TextBox("NumShares", null, new { @class = "form-control" }) <br />
+            </div>
+        </div>
+        <div class="form-group">
+                <div class="col-md-10">
+                    Enter a date: <br />@Html.TextBox("Date", null, new { @class = "form-control" }) <br />
+                </div>
+            </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Buy" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

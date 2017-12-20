@@ -1,0 +1,71 @@
+﻿@using LonghornBank.Controllers
+@using LonghornBank.Models
+@model IEnumerable<LonghornBank.Models.Payee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Bill Pay</h2>
+
+<br /> <br />
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-10">
+                Choose an Account: <br />@Html.DropDownList("SelectedAccount", (SelectList)ViewBag.Accounts, new { @class = "form-control" }) <br />
+            </div>
+        </div>
+        <table class="table">
+            <tr>
+                <th>
+                    Payee Name
+                </th>
+                <th>
+                    Actions
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in (IEnumerable<LonghornBank.Models.Payee>)ViewBag.MineOnly)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.Name, "Edit", "Payees", new { id = item.PayeeID }, null)
+                    </td>
+                    <td>
+                        Select this Payee: <br /> @Html.RadioButton("SelectedPayee",item.PayeeID, new { @class = "form-check-input" })
+                    </td>
+                </tr>
+            }
+        </table>
+        @Html.ActionLink("Can't find your payee? Click here", "AddPayee", new { Id = ViewBag.Id, AccountNumber = ViewBag.AccountNumber, SelectedType = ViewBag.AccountType }, new { @class = "btn btn-primary" })
+        <div class="form-group">
+            <div class="col-md-10">
+                Enter an Amount: <br />@Html.TextBox("SelectedAmount", null, new { @class = "form-control" }) <br />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                Enter a description: <br />@Html.TextBox("Description", null, new { @class = "form-control" }) <br />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                Enter a transaction date: <br />@Html.TextBox("TransactionDate", null, new { @class = "form-control" }) <br />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Pay" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

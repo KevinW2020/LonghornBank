@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Longhorn Bank</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+
+        <div class="container">
+
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a href="http://localhost:57197/">
+                <img src="https://lh3.googleusercontent.com/o-dlXTMI-i8hzkE1WLHDudVEIt1XF2INVHHY2s3JsdIhj_uGucqLcHpn8Qciz1r9n1-V=w300" class="img-center" alt="Cinque Terre" width="80" height="61" align="left">
+                </a>
+
+                    @*@Html.ActionLink(" Longhorn Bank", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+
+</div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Longhorn Bank Home", "Index", "Home", null, null)</li>
+                    <li>@Html.ActionLink("Accounts Home", "MyHome", "Home", null, null)</li>
+                    <li>@Html.ActionLink("My Details", "Details", "Users", null, null)</li>
+                </ul>
+                @Html.Partial("_LoginPartial")    
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+       
+        @{ Html.RenderPartial("_Alerts"); }
+        @RenderBody()
+        <hr />
+        <footer>
+            <p><center>Balances at Longhorn Bank are not FDIC insured, are not bank guaranteed, and are not insured by any federal agencies.  Banking with us involves risks, and there is always the potential of losing money when you invest your trust in us.</center></p>
+            <p><center>Longhorn Bank is a division of Longhorn Bank <a href="https://www.cayman.com.ky/cayman-bank-accounts">Cayman Islands</a>.  Your money is <i>our</i> interest, not the government's.</center></p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Sell";
+}
+
+<h2>Sell</h2>
+@*<h5>
+    Stock Name: @ViewBag.Name
+    </h5>
+<h5>
+
+    Stock Ticker: @ViewBag.Ticker
+    </h5>
+<h5>
+    Number Shares Owned: @ViewBag.NumShares
+</h5>
+<h5>
+    Associated Fees: $@ViewBag.Fee
+</h5>
+<h5>
+    Total Change: $@ViewBag.Gain
+</h5>*@
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+
+        @Html.Hidden("SBIDA", (String)ViewBag.StockInfo)
+
+        <br />
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-10">
+                Enter the number of shares to sell: <br />@Html.TextBox("NumShares", null, new { @class = "form-control" }) <br />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                Stock name: <br />@Html.TextBox("Name", null, new { @class = "form-control", @readonly = "true" }) <br />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                Gee amount: <br />@Html.TextBox("Fee", null, new { @class = "form-control", @readonly = "true" }) <br />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                Gains/losses to date: <br />@Html.TextBox("Gain", null, new { @class = "form-control", @readonly = "true" }) <br />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="name" value="Sell" onclick="return confirm('Sell ' + NumShares.value + ' shares of ' + Name.value + '?  You will be charged a fee of $' + Fee.value + '.  Your gains/losses to date are ' + Gain.value + '.')" />
+            </div>
+        </div>
+        @Html.ActionLink("Go Back", "StocksOwned", "StockPortfolios", null, new { @class = "btn btn-primary" })
+    </div>
+}
+        </div>
+}
+        
+<script type="text/javascript">
+    function Submit() {
+            if (confirm("Are you sure you want to submit ?")) {
+                document.getElementById('anchortag').href += "?isTrue=true";
+            } else {
+                document.getElementById('anchortag').href += "?isTrue=false";
+            }
+            return true;
+        }
+</script>

@@ -1,0 +1,72 @@
+﻿@using LonghornBank.Controllers
+@{
+    ViewBag.Title = "Parent Info";
+}
+
+
+
+<h2>Longhorn Bank Cayman Islands: Your Money is <i>Our</i> Interest, not the Government's</h2>
+<h5>
+    Welcome to Longhorn Bank, the bank where you enter all of your transaction dates!  We join the banking industry with just weeks of experience, so it's perfectly normal if you're feeling skeptical about banking with us. Started by four McCombs undergraduate students as an MIS project, Longhorn Bank's mission is to become a profitable business by charging exoribitant fees to you, our valued prospective customers. Thanks for taking the risk and banking with us. Our grade is banking on you.
+</h5>
+
+<br />
+
+<div class="row">
+    <div class="embed-responsive embed-responsive-16by9 center-block">
+        <iframe class="embed-responsive-item" src="~/Content/www.GIFCreator.me_aEZJuw.gif" loop="infinite"></iframe>
+    </div>
+</div>
+
+<h2>What We Offer</h2>
+<div class="row">
+<div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+        <img src="https://www.capitalone.com/assets/compass/contentful/1h6lncjoeq27/Q9ZhrJhcaYUQAQOiACigA/f146f5f47085d29a03081ef84f4cd60e/icon-360-money-market.png" alt="Our accounts earn no interest!">
+        <div class="caption">
+            <h3>Enjoy earning no interest with our fee-ridden checking and savings accounts.</h3>
+            <p>We have some of the most basic banking products in the industry, with just weeks of experience in the banking world.</p>
+            <p>@Html.ActionLink("Apply Here", "Index", "Apply", null, new { @class = "btn btn-primary" })</p>
+        </div>
+    </div>
+</div>
+
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src="https://content.capitaloneinvesting.com/mgdcon/core/COI/images/icons/COFI-icon-IRA-Traditional.svg" alt="Our bank is not insured.">
+            <div class="caption">
+                <h3>Open an IRA with us and pray that your money is still there when you retire.</h3>
+                <p>Longhorn Bank is not FDIC insured, and cannot guarantee the safety or security of your funds or investments.</p>
+                <p>@Html.ActionLink("Apply Here", "Index", "Apply", null, new { @class = "btn btn-primary" })</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src="https://content.capitaloneinvesting.com/mgdcon/core/COI/images/icons/COFI-icon-Research.svg" alt="Invest with us!">
+            <div class="caption">
+                <h3>Trust us (or don't) with your investment needs. The choice is yours.</h3>
+                <p>Open a stock portfolio with us today and see your investments grow.</p>
+                <p>@Html.ActionLink("Apply Here", "Index", "Apply", null, new { @class = "btn btn-primary" })</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-2 col-md-12">
+    <div class="thumbnail">
+        <img src="http://static2.bigstockphoto.com/thumbs/6/2/1/large2/126121007.jpg" alt="We will hold you liable!">
+        <div class="caption">
+            <h3>Now offering debt cards!</h3>
+            <p>Open an account today and watch your debts grow with your convenient Longhorn Bank Debt Card. Now included with every checking account!</p>
+            <p>@Html.ActionLink("Apply Here", "Index", "Apply", null, new { @class = "btn btn-primary" })</p>
+        </div>
+    </div>
+</div>
+
+<p>
+    For interest-bearing accounts with some of the best rates in the industry, please <a href="http://capitalone360.com">click here.</a>
+</p>
+
+</div>

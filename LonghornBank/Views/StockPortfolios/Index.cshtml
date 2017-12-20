@@ -1,0 +1,75 @@
+﻿@model LonghornBank.Models.AppUser
+
+@{
+    ViewBag.Title = "Current Stock Portfolio";
+}
+
+<h2>Portfolio Details</h2>
+
+@foreach (var item in Model.StockPortfolios)
+{
+    <p><b>Portfolio Status: </b>@Html.DisplayFor(modelitem => item.BalanceStatus)</p>
+}
+<table class="table">
+    <tr>
+        <th>
+            Stock Portfolio Number
+        </th>
+        <th>
+            Stock Portfolio Name
+        </th>
+        <th>
+           Cash Balance
+        </th>
+        <th>
+            Stock Balance
+        </th>
+        <th>
+            Current Portfolio Value
+        </th>
+        <th>
+            Accumulated Fees
+        </th>
+
+    </tr>
+
+@foreach (var item in Model.StockPortfolios) {
+    decimal temporary = Convert.ToDecimal(item.CashBalance + item.StockBalance);
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StockPortfolioNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StockPortfolioName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CashBalance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StockBalance)
+        </td>
+        <td>
+            @Html.DisplayFor(ModelItem => (temporary))
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalFees)
+        </td>
+
+
+    </tr>
+}
+
+</table>
+
+@Html.ActionLink("Buy Stocks", "Buy", "StockPortfolios", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("Sell Stocks", "StocksOwned", "StockPortfolios", null, new { @class = "btn btn-primary" })
+<br/> <br />
+@Html.ActionLink("View My Stocks Owned", "StocksOwned", "StockPortfolios", null, new{@class = "btn btn-primary"})
+
+@Html.ActionLink("View live stock prices", "Index", "StockQuote", null, new { @class = "btn btn-primary" })
+
+<input type="button" class="btn btn-primary" value="View livestock prices" onclick="location.href='http://www.cattle.com/markets/'" />
+
+<br /><br />
+<input type="button" class="btn btn-primary" value="Click here to print a stock certificate" onclick="location.href = 'https://content.capitaloneinvesting.com/content/forms/stock_certificate.pdf'" />

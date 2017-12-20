@@ -1,0 +1,57 @@
+﻿@using LonghornBank.Controllers
+@using LonghornBank.Models
+@model IEnumerable<LonghornBank.Models.Transaction>
+
+@{
+    Layout = null;
+}
+
+@{
+    ViewBag.Title = "Similar Transactions";
+}
+
+<h2>Similar Transactions</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Type
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Amount
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in (IEnumerable<LonghornBank.Models.Transaction>)ViewBag.AllTrans)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeOfTransaction)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionAmount)
+            </td>
+
+        </tr>
+    }
+</table>
+

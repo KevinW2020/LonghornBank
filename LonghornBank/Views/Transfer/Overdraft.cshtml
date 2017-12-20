@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Overdraft";
+}
+
+<h2>Your action resulted in an overdraft.</h2>
+<br /><br />
+<p>
+    The transaction was processed, but resulted in a $30 fee. 
+</p>
+
+@Html.ActionLink("Click here to continue", "Index", "ManageAccounts", null, new { @class = "btn btn-primary" })

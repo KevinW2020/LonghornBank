@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            Stock Name
+        </th>
+        <th>
+            Stock Purchase Price
+        </th>
+        <th>
+            Change in stock value
+        </th>
+    </tr>
+
+
+        <tr>
+            <td>
+                @ViewBag.Name
+            </td>
+            <td>
+                @ViewBag.PurchasePrice
+            </td>
+            <td>
+                @ViewBag.Change
+            </td>
+        </tr>  
+
+</table>
+
+<!-- TradingView Widget BEGIN -->
+<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+<script type="text/javascript">
+new TradingView.widget({
+  "width": 980,
+  "height": 610,
+  "symbol": "@ViewBag.Symbol",
+  "interval": "D",
+  "timezone": "Etc/UTC",
+  "theme": "White",
+  "style": "1",
+  "locale": "en",
+  "toolbar_bg": "#f1f3f6",
+  "enable_publishing": false,
+  "allow_symbol_change": true,
+  "hideideas": true
+});
+</script>
+<!-- TradingView Widget END -->
+
+<br />
+@Html.ActionLink("Click here to go back", "Index", "StockPortfolios", null, new { @class = "btn btn-primary" })

@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "MaxOverdraft";
+}
+
+<h2>You have exceeded the maximum overdraft of $50</h2>
+<br /><br />
+<p>Please enter a valid amount. </p>
+
+@Html.ActionLink("Click here to go back", "Index", "BillPay", null, new { @class = "btn btn-primary" })
+

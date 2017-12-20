@@ -1,0 +1,15 @@
+diff a/LonghornBank/LonghornBank.csproj b/LonghornBank/LonghornBank.csproj	(rejected hunks)
+@@ -475,10 +475,13 @@
+      <Content Include="Views\StockPortfolios\Buy.cshtml" />
+      <Content Include="Views\StockPortfolios\StocksOwned.cshtml" />
+      <Content Include="Views\StockPortfolios\Error.cshtml" />
+++<<<<<<< Updated upstream
+ +    <Content Include="Views\BillPay\NegativeEntry.cshtml" />
+ +    <Content Include="Views\BillPay\NegativeBalance.cshtml" />
+ +    <Content Include="Views\BillPay\MaxOverdraft.cshtml" />
+ +    <Content Include="Views\BillPay\Overdraft.cshtml" />
+++=======
+++>>>>>>> Stashed changes
+      <Content Include="Views\StockPortfolios\Details.cshtml" />
+      <Content Include="Views\StockPortfolios\Sell.cshtml" />
+      <None Include="Web.Debug.config">

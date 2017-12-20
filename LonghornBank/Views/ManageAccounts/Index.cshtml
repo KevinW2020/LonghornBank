@@ -1,0 +1,199 @@
+﻿@using LonghornBank.Controllers
+@model LonghornBank.Models.AppUser
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Customer Home Page</h2>
+<h2>All My Accounts</h2>
+
+<br />
+@Html.ActionLink("DEPOSIT", "Index", "Deposit", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("WITHDRAW", "Index", "Withdraw", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("TRANSFER", "Index", "Transfer", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("BILL PAY", "Index", "BillPay", null, new { @class = "btn btn-primary" })
+<br /><br />
+
+<h4>Checking</h4>
+<table class="table">
+    <tr>
+        <th>
+            Checking Account Number
+        </th>
+        <th>
+            Checking Account Name
+        </th>
+        <th>
+            Checking Balance
+        </th>
+        <th>
+            View Transactions/Details
+        </th>
+        <th></th>
+    </tr>
+    
+       
+   
+    @foreach (var item in Model.Checkings)
+    {
+        string Actual = Convert.ToString(item.CheckingNumber);
+        string sub = Actual.Substring(6, 4);
+        string used = "XXXXXX" + sub;
+
+        <tr>
+            <td>
+                @used
+            </td>
+            <td>
+                @Html.ActionLink(item.CheckingName, "ChangeAccountName", new { id = item.CheckingID, SelectedType = "Checking", AccountNumber = item.CheckingNumber, AccountName = item.CheckingName })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckingBalance)
+            </td>
+            <td>
+                @Html.ActionLink("View Transactions", "Index", "TransactionAccounts", new { AccountNumber = item.CheckingNumber }, null)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<h4>Savings</h4>
+<table class="table">
+    <tr>
+        <th>
+            Savings Account Number
+        </th>
+        <th>
+            Savings Account Name
+        </th>
+        <th>
+            Savings Balance
+        </th>
+        <th>
+            View Transactions/Details
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Savings)
+    {
+        string Actual = Convert.ToString(item.SavingsNumber);
+        string sub = Actual.Substring(6, 4);
+        string used = "XXXXXX" + sub;
+
+        <tr>
+            <td>
+                @used
+            </td>
+            <td>
+                @Html.ActionLink(item.SavingsName, "ChangeAccountName", new { id = item.SavingsID, SelectedType = "Savings", AccountNumber = item.SavingsNumber, AccountName = item.SavingsName })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SavingsBalance)
+            </td>
+            <td>
+                @Html.ActionLink("View Transactions", "Index", "TransactionAccounts", new { AccountNumber = item.SavingsNumber }, null)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<h4>IRA</h4>
+<table class="table">
+    <tr>
+        <th>
+            IRA Account Number
+        </th>
+        <th>
+            IRA Account Name
+        </th>
+        <th>
+            IRA Balance
+        </th>
+        <th>
+            View Transactions/Details
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.IRAs)
+    {
+        string Actual = Convert.ToString(item.IRANumber);
+        string sub = Actual.Substring(6, 4);
+        string used = "XXXXXX" + sub;
+
+        <tr>
+            <td>
+                @used
+            </td>
+            <td>
+                @Html.ActionLink(item.IRAName, "ChangeAccountName", new { id = item.IRAID, SelectedType = "IRA", AccountNumber = item.IRANumber, AccountName = item.IRAName })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IRABalance)
+            </td>
+            <td>
+                @Html.ActionLink("View Transactions", "Index", "TransactionAccounts", new { AccountNumber = item.IRANumber }, null)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<h4>Stock Portfolio</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            Stock Account Number
+        </th>
+        <th>
+            Stock Account Name
+        </th>
+        <th>
+            Total Portfolio Balance
+        </th>
+        <th>
+            View Transactions/Details
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.StockPortfolios)
+    {
+        decimal? a = item.CashBalance;
+        decimal? b = item.StockBalance;
+        decimal? c = a + b;
+
+        string Actual = Convert.ToString(item.StockPortfolioNumber);
+        string sub = Actual.Substring(6, 4);
+        string used = "XXXXXX" + sub;
+
+        <tr>
+            <td>
+                @used
+            </td>
+            <td>
+                @Html.ActionLink(item.StockPortfolioName, "ChangeAccountName", new { id = item.StockPortfolioID, SelectedType = "Stock", AccountNumber = item.StockPortfolioNumber, AccountName = item.StockPortfolioName })
+            </td>
+            <td>
+                @c
+            </td>
+            <td>
+                @Html.ActionLink("Portfolio Details", "Index", "StockPortfolios", new { AccountNumber = item.StockPortfolioNumber }, null)
+                <br />
+                <br />
+                @Html.ActionLink("View Transactions", "Index", "TransactionAccounts", new { AccountNumber = item.StockPortfolioNumber }, null)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    @Html.ActionLink("Apply For a New Account", "Index", "Apply", null, null)
+</p>
+

@@ -1,0 +1,58 @@
+﻿@using LonghornBank.Controllers
+@using LonghornBank.Models
+
+
+@{
+    ViewBag.Title = "TransferConfirmation";
+}
+
+<h2>TransferConfirmation</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <br />
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-10">
+                <h3>Transfering From</h3>
+                Account Type Selected: <br />@Html.RadioButton("SelectedAccountType1", (string)ViewBag.AccountType, true, new { @class = "form-check-input" }) @ViewBag.AccountType<br /> <br />
+                Account Number Selected: <br />@Html.RadioButton("SelectedAccountNumber1", (string)ViewBag.AccountNumber, true, new { @class = "form-check-input" }) @ViewBag.AccountNumber<br />
+                <h3>Transfering To</h3>
+                Account Type Selected: <br />@Html.RadioButton("SelectedAccountType2", (string)ViewBag.ToAccountType, true, new { @class = "form-check-input" }) @ViewBag.ToAccountType<br /> <br />
+                Account Type Selected: <br />@Html.RadioButton("SelectedAccountNumber2", (string)ViewBag.ToAccountNumber, true, new { @class = "form-check-input" }) @ViewBag.ToAccountNumber<br /> <br />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                Enter an Amount: <br />@Html.TextBox("SelectedAmount", null, new { @class = "form-control" }) <br />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                Enter a transaction date: <br />@Html.TextBox("TransactionDate", null, new { @class = "form-control" }) <br />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @*<input type="submit" value="Transfer" class="btn btn-default" />*@
+                <input type="submit" name="name" value="Transfer" onclick="return confirm('Transfer $' + SelectedAmount.value + ' from ' + SelectedAccountType1.value + ' account number ' + SelectedAccountNumber1.value + ' to ' + SelectedAccountType2.value + ' account number ' + SelectedAccountNumber2.value + '?')" />
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    function Submit() {
+            if (confirm("Are you sure you want to submit ?")) {
+                document.getElementById('anchortag').href += "?isTrue=true";
+            } else {
+                document.getElementById('anchortag').href += "?isTrue=false";
+            }
+            return true;
+        }
+</script>

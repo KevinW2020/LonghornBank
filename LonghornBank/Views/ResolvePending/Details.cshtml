@@ -1,0 +1,98 @@
+﻿@model LonghornBank.Models.Transaction
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Transaction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeOfTransaction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeOfTransaction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApprovalStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApprovalStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionComments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionComments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ManagerComments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManagerComments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ManagerEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManagerEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountSender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountSender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountReceiver)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountReceiver)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TransactionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

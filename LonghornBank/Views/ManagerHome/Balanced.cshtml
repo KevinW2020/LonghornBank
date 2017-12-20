@@ -1,0 +1,74 @@
+﻿@model IEnumerable<LonghornBank.Models.StockPortfolio>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Balance Bonus</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <table class="table">
+            <tr>
+                <th>
+                    Stock Portfolio Number
+                </th>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Stock Balance
+                </th>
+                <th>
+                    Cash Balance
+                </th>
+                <th>
+                    Balance Status
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in (IEnumerable<LonghornBank.Models.StockPortfolio>)ViewBag.AllStock)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StockPortfolioID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AppUser.FName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AppUser.LName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StockBalance)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CashBalance)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BalanceStatus)
+                    </td>
+
+                </tr>
+            }
+        </table>
+        <div class="col-md-10">
+            Apply 10% bonus to all balanced portfolios?<br />
+             <br />@Html.RadioButton("ApplyBonus", "Yes", true, new { @class = "form-check-input" }) Yes
+             <br />@Html.RadioButton("ApplyBonus", "No", new { @class = "form-check-input" }) No<br />
+        </div>
+        <div class="form-group">
+            <div>
+                <br /><br /><br />  <input type="submit" value="Apply Bonus" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

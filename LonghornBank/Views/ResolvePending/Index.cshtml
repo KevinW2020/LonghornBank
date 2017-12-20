@@ -1,0 +1,84 @@
+﻿@model IEnumerable<LonghornBank.Models.Transaction>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeOfTransaction)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApprovalStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionComments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ManagerComments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ManagerEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountSender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountReceiver)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeOfTransaction)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApprovalStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionComments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManagerComments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManagerEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountSender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountReceiver)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "AccountTransactions", new { id=item.TransactionID }, null) |
+            @Html.ActionLink("Details", "Details", new { id=item.TransactionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TransactionID })
+        </td>
+    </tr>
+}
+
+</table>

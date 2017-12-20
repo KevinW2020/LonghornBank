@@ -1,0 +1,57 @@
+﻿@model IEnumerable<LonghornBank.Models.StockPortfolio>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Can the user buy stocks</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <table class="table">
+            <tr>
+                <th>
+                    Stock Portfolio Number
+                </th>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Able to Buy
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in (IEnumerable<LonghornBank.Models.StockPortfolio>)ViewBag.AllStock)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StockPortfolioID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AppUser.FName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AppUser.LName)
+                    </td>
+                    <td>
+                        @Html.RadioButton("SelectedID", item.StockPortfolioID, new { @class = "form-check-input" })
+                    </td>
+
+                </tr>
+            }
+        </table>
+        <div class="form-group">
+            <div class="col-md-offset-10">
+                <input type="submit" value="Give Permission" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

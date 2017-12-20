@@ -1,0 +1,19 @@
+﻿@using LonghornBank.Helpers
+
+@{
+    var alerts = TempData.ContainsKey(Alert.TempDataKey)
+                ? (List<Alert>)TempData[Alert.TempDataKey]
+                : new List<Alert>();
+
+    if (alerts.Any())
+    {
+        <hr />
+    }
+
+    foreach (var alert in alerts)
+    {
+        <div class="alert alert-@alert.AlertStyle">
+            @Html.Raw(alert.Message)
+        </div>
+    }
+}

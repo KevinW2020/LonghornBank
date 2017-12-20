@@ -1,0 +1,85 @@
+﻿@model IEnumerable<LonghornBank.Models.StockViewModel>
+
+@{
+    ViewBag.Title = "Stocks Owned";
+}
+
+<h2>Stocks</h2>
+
+@Html.ActionLink("Click Here to Go Back", "Index", "StockPortfolios")
+<table class="table">
+    <tr>
+        <th>
+            Stock Name
+        </th>
+        <th>
+            Symbol
+        </th>
+        <th>
+            Purchase Price
+        </th>
+        <th>
+            Current Price
+        </th>
+        <th>
+            Difference
+        </th>
+        <th>
+            Number of Shares
+        </th>
+        <th>
+            Total Change
+        </th>
+        <th>
+            Total Current Value
+        </th>
+        <th>
+            Sell/ Details
+        </th>
+    </tr>
+
+    @foreach (var item in (IEnumerable<LonghornBank.Models.StockViewModel>)ViewBag.Views)
+    {
+        decimal TCV = item.CurrentPrice * item.NumShares;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Symbol)
+            </td>
+            <td>
+                $
+                @Html.DisplayFor(modelItem => item.PurchasePrice)
+            </td>
+            <td>
+                $
+                @Html.DisplayFor(modelItem => item.CurrentPrice)
+            </td>
+            <td>
+                $
+                @Html.DisplayFor(modelItem => item.Difference)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumShares)
+            </td>
+            <td>
+                $
+                @Html.DisplayFor(modelItem => item.TotalChange)
+            </td>
+            <td>
+                @TCV
+            </td>
+            <td>
+                @Html.ActionLink("Sell /", "Sell", new { StockBridgeID = item.StockBridgeID, Name = item.StockName, NumShares = item.NumShares, Gain = item.TotalChange, Ticker = item.Symbol })
+
+                @Html.ActionLink("Details", "Details", new { StockBridgeID = item.StockBridgeID })
+
+
+
+                
+            </td>
+        </tr>
+    }
+
+</table>

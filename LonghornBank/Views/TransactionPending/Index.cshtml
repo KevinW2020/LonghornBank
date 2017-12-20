@@ -1,0 +1,199 @@
+﻿@using LonghornBank.Controllers
+@using LonghornBank.Models
+@model IEnumerable<LonghornBank.Models.Transaction>
+
+@{
+    ViewBag.Title = "Pending Transactions";
+}
+
+<h2>Pending Transactions</h2>
+
+@using (Html.BeginForm())
+{
+    <table class="table">
+        <tr>
+            <p class="form-group">
+            <th>
+                Search by Description: @Html.TextBox("SearchString", null, new { @class = "form-control" }) <br />
+                Search by Transaction Number: @Html.TextBox("SearchNum", null, new { @class = "form-control" }) <br />
+
+                Transaction Type: <br />@Html.DropDownList("SelectedType",
+                    new SelectList(Enum.GetValues(typeof(TransactionType))),
+                    "Select Transaction Type",
+                    new { @class = "form-control" })<br />
+                <br /><br /><br /><br /><br />
+                <input type="submit" value="Search" class="btn btn-default" />
+
+            </th>
+
+            <th>
+                <div class="form-group">
+                    <div class="form-check">
+                        <p>Show Transactions From</p>
+                        <label class="form-check-label">
+                            @Html.RadioButton("daysBack", 0, true, new { @class = "form-check-input" }) All Transactions<br />
+                        </label>
+                        <br />
+                        <label class="form-check-label">
+                            @Html.RadioButton("daysBack", 15, new { @class = "form-check-input" }) Last 15 Days<br />
+                        </label>
+                        <br />
+                        <label class="form-check-label">
+                            @Html.RadioButton("daysBack", 30, new { @class = "form-check-input" }) Last 30 Days
+                        </label>
+                        <br />
+                        <label class="form-check-label">
+                            @Html.RadioButton("daysBack", 60, new { @class = "form-check-input" }) Last 60 Days
+                        </label>
+                        <br />
+                        <label class="form-check-label">
+                            @Html.RadioButton("daysBack", 696969, new { @class = "form-check-input" }) Custom Date Range
+                        </label>
+                        <br />
+                        Transactions From: @Html.TextBox("startDate", null, new { @class = "form-control" }) <br />
+                        To: @Html.TextBox("endDate", null, new { @class = "form-control" }) <br />
+                    </div>
+                </div>
+            </th>
+
+            <th>
+                <div class="form-group">
+                    <div class="form-check">
+                        <p>Show Transactions Amounting Between</p>
+                        <label class="form-check-label">
+                            @Html.RadioButton("price", 707070, true, new { @class = "form-check-input" }) All Transactions<br />
+                        </label>
+                        <br />
+                        <label class="form-check-label">
+                            @Html.RadioButton("price", 0, new { @class = "form-check-input" }) $0-$100<br />
+                        </label>
+                        <br />
+                        <label class="form-check-label">
+                            @Html.RadioButton("price", 100, new { @class = "form-check-input" }) $100-$200
+                        </label>
+                        <br />
+                        <label class="form-check-label">
+                            @Html.RadioButton("price", 200, new { @class = "form-check-input" }) $200-$300
+                        </label>
+                        <br />
+                        <label class="form-check-label">
+                            @Html.RadioButton("price", 300, new { @class = "form-check-input" }) $300+
+                        </label>
+                        <br />
+                        <label class="form-check-label">
+                            @Html.RadioButton("price", 696969, new { @class = "form-check-input" }) Custom Amount Range
+                        </label>
+                        <br />
+                        Transactions Between: @Html.TextBox("priceFloor", null, new { @class = "form-control" }) <br />
+                        And: @Html.TextBox("priceCap", null, new { @class = "form-control" }) <br />
+                    </div>
+                </div>
+            </th>
+
+            <th>
+                <div class="form-group">
+                    <div class="form-check">
+                        <p>Order By</p>
+                        <label class="form-check-label">
+                            @Html.RadioButton("SelectedSortOrder", SortOrder.AscTransactionNumber, new { @class = "form-check-input" }) Ascending Transaction Number<br />
+                        </label>
+                        <br />
+                        <label class="form-check-label">
+                            @Html.RadioButton("SelectedSortOrder", SortOrder.DescTransactionNumber, new { @class = "form-check-input" }) Descending Transaction Number<br />
+                        </label>
+                        <br />
+                        <label class="form-check-label">
+                            @Html.RadioButton("SelectedSortOrder", SortOrder.AscTransactionType, new { @class = "form-check-input" }) Ascending Transaction Type<br />
+                        </label>
+                        <br />
+                        <label class="form-check-label">
+                            @Html.RadioButton("SelectedSortOrder", SortOrder.DescTransactionType, new { @class = "form-check-input" }) Descending Transaction Type<br />
+                        </label>
+                        <br />
+                        <label class="form-check-label">
+                            @Html.RadioButton("SelectedSortOrder", SortOrder.AscTransactionDescription, new { @class = "form-check-input" }) Ascending Transaction Description<br />
+                        </label>
+                        <br />
+                        <label class="form-check-label">
+                            @Html.RadioButton("SelectedSortOrder", SortOrder.DescTransactionDescription, new { @class = "form-check-input" }) Descending Transaction Description<br />
+                        </label>
+                        <br />
+                        <label class="form-check-label">
+                            @Html.RadioButton("SelectedSortOrder", SortOrder.AscTransactionAmount, new { @class = "form-check-input" }) Ascending Transaction Amount<br />
+                        </label>
+                        <br />
+                        <label class="form-check-label">
+                            @Html.RadioButton("SelectedSortOrder", SortOrder.DescTransactionAmount, new { @class = "form-check-input" }) Descending Transaction Amount<br />
+                        </label>
+                        <br />
+                        <label class="form-check-label">
+                            @Html.RadioButton("SelectedSortOrder", SortOrder.AscTransactionDate, new { @class = "form-check-input" }) Ascending Transaction Date<br />
+                        </label>
+                        <br />
+                        <label class="form-check-label">
+                            @Html.RadioButton("SelectedSortOrder", SortOrder.DescTransactionDate, true, new { @class = "form-check-input" }) Descending Transaction Date<br />
+                        </label>
+                        <br />
+                    </div>
+                </div>
+            </th>
+        </tr>
+    </table>
+
+
+    @*<input type="submit" value="Search" class="btn btn-default" />*@
+    @*@Html.ActionLink("Show All", "Index", null, new { @class = "btn btn-default" })*@
+
+    <p>
+        Displaying @ViewBag.NumberSelectedTransactions transaction(s).
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeOfTransaction)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionAmount)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeOfTransaction)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionAmount)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "AccountTransactions", new { id = item.TransactionID }, null)
+            </td>
+            <td>
+                @Html.ActionLink("Dispute", "Create", "Disputes", new { id = item.TransactionID }, null)
+            </td>
+        </tr>
+    }
+
+</table>

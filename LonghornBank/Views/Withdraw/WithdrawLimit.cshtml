@@ -1,0 +1,53 @@
+﻿@using LonghornBank.Controllers
+@using LonghornBank.Models
+
+
+@{
+    ViewBag.Title = "Withdraw";
+}
+
+
+<h2>Unqualified distribution</h2>
+<h3>The max you can withdraw is $3000. There is a $30 fee per transaction.</h3>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <br />
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-10">
+                Account Type Selected: <br />@Html.RadioButton("SelectedAccount", (string)ViewBag.SelectedAccount, true, new { @class = "form-check-input" }) @ViewBag.SelectedAccount<br /> <br />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                $30 fee: <br /><br />
+                @Html.RadioButton("SelectedInclude", "Yes", true, new { @class = "form-check-input" }) Include fee in withdrawal<br /> <br />
+                @Html.RadioButton("SelectedInclude", "No", true, new { @class = "form-check-input" }) Do not include in withdrawal<br />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                Enter an Amount: <br />@Html.TextBox("SelectedAmount", null, new { @class = "form-control" }) <br />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                Enter a transaction date: <br />@Html.TextBox("TransactionDate", null, new { @class = "form-control" }) <br />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Withdraw" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,13 @@
+﻿@using LonghornBank.Controllers
+@{
+    ViewBag.Title = "EmployeeHome";
+}
+
+<h2>Employee Home</h2>
+
+<p>
+    @Html.ActionLink("User Index", "EmployeeIndex", "Users", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Enable/Disable Customers", "Index", "RoleAdmin", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("View All Transactions", "Index", "Transaction", null, new { @class = "btn btn-primary" })
+
+</p>
